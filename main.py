@@ -1,9 +1,11 @@
-import pymongo
 import bottle
+import os
+import pymongo
 
 @bottle.route('/')
 def site_index():
 	return bottle.template('index_template')
 
 bottle.debug(True)
-bottle.run(host='localhost', port=8080)
+port = int(os.getenv('$PORT', 8080))
+bottle.run(host="http://refsite.herokuapp.com", port=port)
